@@ -1,8 +1,8 @@
 package util
 
 import (
-	errors "GO_Redis/error"
-	"GO_Redis/user"
+	"GO_Redis/internal/entity"
+	errors "GO_Redis/pkg/error"
 	"fmt"
 	"reflect"
 )
@@ -20,8 +20,8 @@ func StructTOMap(obj interface{}) map[string]interface{} {
 	return result
 }
 
-func MapToUser(m map[string]string) *user.User {
-	u := &user.User{
+func MapToUser(m map[string]string) *entity.User {
+	u := &entity.User{
 		Name:    m["Name"],
 		Surname: m["Surname"],
 		Email:   m["Email"],

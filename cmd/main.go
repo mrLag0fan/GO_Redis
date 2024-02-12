@@ -1,15 +1,15 @@
 package main
 
 import (
-	errors "GO_Redis/error"
-	redis "GO_Redis/redis"
-	"GO_Redis/user"
+	"GO_Redis/internal/entity"
+	redis "GO_Redis/internal/redis"
+	errors "GO_Redis/pkg/error"
 	"fmt"
 	"github.com/google/uuid"
 )
 
 func main() {
-	u := user.User{
+	u := entity.User{
 		Name:    "oleh",
 		Surname: "shalapsky",
 		Email:   "shalapsky.oleg@gmail.com",
@@ -17,7 +17,7 @@ func main() {
 	}
 
 	redis.Post(u)
-	parse, err := uuid.Parse("edae679b-196e-4815-bc97-fe5008d6140f")
+	parse, err := uuid.Parse("a8ca47ac-e966-42bc-a8f2-3c158aa9a5d4")
 	errors.CheckError(err)
 	fmt.Println(*redis.GetByUUID(parse))
 }

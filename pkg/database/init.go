@@ -3,9 +3,10 @@ package database
 import (
 	"database/sql"
 	"fmt"
+	"sync"
+
 	_ "github.com/lib/pq"
 	"github.com/redis/go-redis/v9"
-	"sync"
 )
 
 const (

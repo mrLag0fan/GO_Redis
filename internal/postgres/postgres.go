@@ -4,8 +4,11 @@ import (
 	my_user "GO_Redis/internal/entity"
 	"GO_Redis/pkg/database"
 	errors "GO_Redis/pkg/error"
+
 	"github.com/google/uuid"
 )
+
+func NewPostgresRepo()
 
 func GetByUUID(id uuid.UUID) *my_user.User {
 	row := database.DB.QueryRow(`SELECT * FROM "go-user" WHERE id = $1`, id)

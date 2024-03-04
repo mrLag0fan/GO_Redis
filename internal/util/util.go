@@ -1,9 +1,9 @@
 package util
 
 import (
-	"GO_Redis/internal/entity"
-	errors "GO_Redis/pkg/error"
+	"GO_Redis/internal/model"
 	"fmt"
+	"log"
 	"reflect"
 )
 
@@ -20,8 +20,8 @@ func StructTOMap(obj interface{}) map[string]interface{} {
 	return result
 }
 
-func MapToUser(m map[string]string) *entity.User {
-	u := &entity.User{
+func MapToUser(m map[string]string) *model.User {
+	u := &model.User{
 		Name:    m["Name"],
 		Surname: m["Surname"],
 		Email:   m["Email"],
@@ -30,7 +30,9 @@ func MapToUser(m map[string]string) *entity.User {
 	age, ok := m["Age"]
 	if ok {
 		_, err := fmt.Sscanf(age, "%d", &u.Age)
-		errors.CheckError(err)
+		if err != nil {
+			log.Fatalf("Can't parse string to int: %s", err)
+		}
 	}
 
 	return u
